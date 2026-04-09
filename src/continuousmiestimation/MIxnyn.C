@@ -34,10 +34,11 @@
 #include <limits.h>
 #include <float.h>
 
-#include "mex.h"
+// #include "mex.h"
 
 #include "miutils.h"
 
+extern "C" {
 
 void MIxnyn(int dimx, int dimy, int K, int N, char* fname, double *MI) 
 {
@@ -124,44 +125,45 @@ void MIxnyn(int dimx, int dimy, int K, int N, char* fname, double *MI)
   free(psi);
 
 }
-
-
-
-void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
-{
-    
-    void MIxnyn(int, int, int, int, char *, double *);
-    
-    char *fname;
-    double *MI;
-    double *X;
-    double *Y;
-    int dimx;
-    int dimy;
-    int N;
-    int K;
-    
-    
-    
-    fname = mxArrayToString(prhs[0]);
-    // fname = (char *)mxGetData(prhs[0]); 
-    dimx = (int)mxGetScalar(prhs[1]);
-    dimy = (int)mxGetScalar(prhs[2]);
-    N = (int)mxGetScalar(prhs[3]);
-    K = (int)mxGetScalar(prhs[4]);
-   
-
-    
-    
-
-    plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-   
-    MI = mxGetPr(plhs[0]);
-    
-    
-    MIxnyn(dimx, dimy, K, N, fname, MI) ;
-    
 }
+
+
+
+// void mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
+// {
+//     
+//     void MIxnyn(int, int, int, int, char *, double *);
+//     
+//     char *fname;
+//     double *MI;
+//     double *X;
+//     double *Y;
+//     int dimx;
+//     int dimy;
+//     int N;
+//     int K;
+//     
+//     
+//     
+//     fname = mxArrayToString(prhs[0]);
+//     // fname = (char *)mxGetData(prhs[0]); 
+//     dimx = (int)mxGetScalar(prhs[1]);
+//     dimy = (int)mxGetScalar(prhs[2]);
+//     N = (int)mxGetScalar(prhs[3]);
+//     K = (int)mxGetScalar(prhs[4]);
+//    
+// 
+//     
+//     
+// 
+//     plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
+//    
+//     MI = mxGetPr(plhs[0]);
+//     
+//     
+//     MIxnyn(dimx, dimy, K, N, fname, MI) ;
+//     
+// }
 
 
 
