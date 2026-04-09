@@ -5,10 +5,17 @@ import os
 from dataclasses import dataclass
 from typing import Self
 
+so_files = [f for f in os.listdir(os.path.dirname(__file__)) if f[-3:] == ".so"]
+print(f"continuousmiestimation: Available compiled .so files are {so_files}")
+if len(so_files) == 0:
+    raise FileNotFoundError("No compiled _MIxnyn.*.so file exists")
+elif len(so_files) > 1:
+    print("continuousmiestimation: WARN: using last available .so file by alphabetical (prioritises python version)")
+so_file = sorted(so_files)[-1]
+
 fpath_so = os.path.join(
     os.path.dirname(__file__),
-#    "libMIxnyn.so"
-    "_MIxnyn.cpython-314-darwin.so"
+    so_file
 )
 LIB = ctypes.CDLL(fpath_so)
 
@@ -21,7 +28,6 @@ LIB.MIxnyn.argtypes = [
     ctypes.POINTER(ctypes.c_double)                   # double *MI
 ]
 LIB.MIxnyn.restype = None
-
 
 
 @dataclass(frozen=True, kw_only=True)
