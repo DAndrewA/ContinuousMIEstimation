@@ -161,12 +161,12 @@ class MIEstimator:
         # computation is Eq. (8)/N from (10.1103/PhysRevE.100.022404). Communications with Holmes shows that this is the correct formulation of the formula, as 1. the chi2 distribution has an additional factor of 1/2 in the exponentiation, and 2. x~sigma_i is poorly defined, so a probability density based on a value a_i sigma_i^2 / B needs to be used, making use of the Jacobian |d(a_i sigma_i^2/B)/d(sigma_i^2)|
         a_i_div_N = (n_i - 1) / n_i
         k_i = n_i - 1
-        std_MI = np.sqrt(
+        std_MI = float(np.sqrt(
             np.sum(
                 a_i_div_N * np.power(sigma_i, 2)
             )
             / np.sum(k_i)
-        )
+        ))
         return MI(
             value = mi_value,
             std = std_MI,
