@@ -154,7 +154,7 @@ class MIEstimator:
                     )
                 )
             sigma_i.append(np.std(MI_for_current_iteration))
-            n_i.append(n_splits)
+            n_i.append(self.n_splits)
 
         sigma_i = np.asarray(sigma_i)
         n_i = np.asarray(n_i)
