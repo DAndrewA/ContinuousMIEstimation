@@ -1,0 +1,3 @@
+# MANIFEST.in
+include src/continuousmiestimation/MIxnyn.C
+include src/continuousmiestimation/miutils.h

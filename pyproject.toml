@@ -1,6 +1,6 @@
 [project]
 name = "continuousmiestimation"
-version = "0.1.0"
+version = "1.0.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
@@ -12,7 +12,7 @@ dependencies = [
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-ext-modules = [
-    {name = "continuousmiestimation._MIxnyn", sources = ["src/continuousmiestimation/MIxnyn.C"]}
-]
+#[tool.setuptools]
+#ext-modules = [
+#    {name = "continuousmiestimation._MIxnyn", sources = ["src/continuousmiestimation/MIxnyn.C"]}
+#]
