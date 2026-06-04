@@ -144,12 +144,13 @@ class MIEstimator:
                 ):
                 shuffled_X = X[:,shuffled_indices]
                 shuffled_Y = Y[:,shuffled_indices]
+                new_n_samples = len(shuffled_indices)
                 MI_for_current_iteration.append(
                     call_MI_xnyn(
                         X = shuffled_X,
                         Y = shuffled_Y,
                         K = self.K,
-                        n_samples = n_samples,
+                        n_samples = new_n_samples,
                     )
                 )
             sigma_i.append(np.std(MI_for_current_iteration))
